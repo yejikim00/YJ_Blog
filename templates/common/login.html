@@ -12,7 +12,10 @@
                 <label for="password">PASSWORD</label>
                 <input type="password" class="form-control" name="password" id="password" value="{{ form.password.value|default_if_none:'' }}">
             </div>
-            <button type="submit" class="mx-5 btn btn-outline-secondary">로그인</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="mx-5 btn btn-outline-secondary">로그인</button>
+                <a href="{% url 'common:join' %}" class="mx-5 btn btn-outline-secondary">회원가입</a>
+            </div>
         </form>
     </div>
 {% endblock %}
