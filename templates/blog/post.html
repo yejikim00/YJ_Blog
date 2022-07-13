@@ -12,4 +12,22 @@
                 </div>
             </div>
         </div>
-    </header>{% endblock %}
+    </header>
+    <div class="container my-lg-auto">
+        <table class="table">
+            <tbody>
+                {% if poster_list %}
+                    {% for poster in poster_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td class="text-center"><a href="{% url 'blog:detail' poster.id %}">{{ poster.subject }}</a></td>
+                            <td class="text-lg-end">{{ poster.create_date }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <td colspan="3">게시물이 없습니다.</td>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
