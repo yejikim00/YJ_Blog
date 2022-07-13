@@ -3,7 +3,7 @@
     <div class="alert alert-danger">
         {% for field in form %}
             <!-- 필드 오류 -->
-            {% if filed.errors %}
+            {% if field.errors %}
                 <div>
                     <strong>{{ field.label }}</strong>
                     {{ field.errors }}

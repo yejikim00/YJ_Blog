@@ -13,6 +13,7 @@
             </div>
         </div>
     </header>
+    <a href="{% url 'blog:poster_create' %}" class="btn btn-outline-secondary m-3" style="float:right">글 작성하기</a>
     <div class="container my-lg-auto">
         <table class="table">
             <tbody>
@@ -30,4 +31,5 @@
             </tbody>
         </table>
     </div>
+    {% include 'footer.html' %}
 {% endblock %}
