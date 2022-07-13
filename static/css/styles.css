@@ -3970,8 +3970,8 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -11036,7 +11036,6 @@ blockquote {
 }
 
 #mainNav {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -11066,13 +11065,13 @@ blockquote {
     background: transparent;
   }
   #mainNav .navbar-brand {
-    color: #fff;
+    color: #000000;
   }
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
-    color: #fff;
+    color: #000000;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
     color: rgba(255, 255, 255, 0.8);
@@ -11197,6 +11196,88 @@ header.masthead .site-heading .h1 {
     font-size: 3.5rem;
   }
   header.masthead .post-heading .subheading {
+    font-size: 1.875rem;
+  }
+}
+
+header.head {
+  position: relative;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+header.head:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #919194;
+  opacity: 0.8;
+}
+header.head .page-heading,
+header.head .post-heading,
+header.head .site-heading {
+  color: #fff;
+}
+header.head .page-heading,
+header.head .site-heading {
+  text-align: center;
+}
+header.head .page-heading h1, header.head .page-heading .h1,
+header.head .site-heading h1,
+header.head .site-heading .h1 {
+  font-size: 3rem;
+}
+header.head .page-heading .subheading,
+header.head .site-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  display: block;
+  margin-top: 0.625rem;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.head .post-heading h1, header.head .post-heading .h1 {
+  font-size: 48pt;
+}
+header.head .post-heading .meta,
+header.head .post-heading .subheading {
+  line-height: 1.1;
+  display: block;
+}
+header.head .post-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.75rem 0 2rem;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.head .post-heading .meta {
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.head .post-heading .meta a {
+  color: #fff;
+}
+@media (min-width: 992px) {
+  header.head {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+  header.head .page-heading h1, header.head .page-heading .h1,
+header.head .site-heading h1,
+header.head .site-heading .h1 {
+    font-size: 5rem;
+  }
+  /*header.masthead .post-heading h1, header.masthead .post-heading .h1 {*/
+  /*  font-size: 3.5rem;*/
+  /*}*/
+  header.head .post-heading .subheading {
     font-size: 1.875rem;
   }
 }
