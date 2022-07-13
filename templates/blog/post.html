@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load blog_filter %}
 {% block content %}
     <!-- Page Header-->
     <header class="head text-center">{# style="background-color: #919294"> #}
@@ -20,7 +21,8 @@
                 {% if poster_list %}
                     {% for poster in poster_list %}
                         <tr>
-                            <td>{{ forloop.counter }}</td>
+{#                            <td>{{ poster_list.paginator.count|sub:poster_list.start_index|sub:forloop.counter0|add:1 }}</td>#}
+                            <td>{{ poster.id }}</td>
                             <td class="text-center"><a href="{% url 'blog:detail' poster.id %}">{{ poster.subject }}</a></td>
                             <td class="text-lg-end">{{ poster.create_date }}</td>
                         </tr>
@@ -30,6 +32,43 @@
                 {% endif %}
             </tbody>
         </table>
+        <!-- 페이징 처리 -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전 페이지 -->
+            {% if poster_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ poster_list.previous_page_number }}"></a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+            <!-- 페이지 리스트 -->
+            {% for page_number in poster_list.paginator.page_range %}
+                {% if page_number >= poster_list.number|add:-5 and page_number <= poster_list.number|add:5 %}
+                    {% if page_number == poster_list.number %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <!-- 다음 페이지 -->
+            {% if poster_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ poster_list.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
     {% include 'footer.html' %}
 {% endblock %}

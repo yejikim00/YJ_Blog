@@ -2,11 +2,15 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.utils import timezone
 from .models import Poster
 from .forms import PosterForm
+from django.core.paginator import Paginator
 
 
 def index(request):
+    page = request.GET.get('page', '1')
     poster_list = Poster.objects.order_by('-create_date')
-    context = {'poster_list': poster_list}
+    paginator = Paginator(poster_list, 10)
+    page_obj = paginator.get_page(page)
+    context = {'poster_list': page_obj}
     return render(request, 'index.html', context)
 
 
