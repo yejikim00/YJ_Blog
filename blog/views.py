@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Poster
 from .forms import PosterForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -26,11 +27,13 @@ def detail(request, poster_id):
     return render(request, 'blog/poster_detail.html', context)
 
 
+@login_required(login_url='common:login')
 def poster_create(request):
     if request.method == "POST":
         form = PosterForm(request.POST)
         if form.is_valid():
             poster = form.save(commit=False)
+            poster.author = request.user
             poster.create_date = timezone.now()
             poster.save()
             return redirect('blog:post')

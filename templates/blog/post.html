@@ -20,15 +20,19 @@
             <tbody>
                 {% if poster_list %}
                     {% for poster in poster_list %}
-                        <tr>
+                        <tr class="text-center">
 {#                            <td>{{ poster_list.paginator.count|sub:poster_list.start_index|sub:forloop.counter0|add:1 }}</td>#}
                             <td>{{ poster.id }}</td>
-                            <td class="text-center"><a href="{% url 'blog:detail' poster.id %}">{{ poster.subject }}</a></td>
-                            <td class="text-lg-end">{{ poster.create_date }}</td>
+                            <td class="text-start">
+                                <a href="{% url 'blog:detail' poster.id %}">{{ poster.subject }}</a>
+                                <span class="text-danger small mx-2"></span>
+                            </td>
+                            <td>{{ poster.create_date }}</td>
+                            <td>{{ poster.author.username }}</td>
                         </tr>
                     {% endfor %}
                 {% else %}
-                    <td colspan="3">게시물이 없습니다.</td>
+                    <td colspan="4">게시물이 없습니다.</td>
                 {% endif %}
             </tbody>
         </table>
